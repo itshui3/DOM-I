@@ -39,10 +39,11 @@ const siteContent = {
 
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
 
 // nav
 let nav = document.querySelectorAll('nav a');
+let navBar = document.querySelector("nav");
 nav[0].textContent = siteContent["nav"]["nav-item-1"];
 nav[1].textContent = siteContent["nav"]["nav-item-2"];
 nav[2].textContent = siteContent["nav"]["nav-item-3"];
@@ -91,3 +92,27 @@ contactText[2].textContent = siteContent["contact"]["email"];
 // footer
 let footerText = document.querySelector("footer > p");
 footerText.textContent = siteContent["footer"]["copyright"];
+
+//adjustments part 3: add new content
+
+let navLinksArr = Array.from(nav);
+
+// for(let i = 0; i < navLinksArr.length; i++) {
+//   navLinksArr[i].style.color = "green";
+// }
+
+navLinksArr.forEach((elem) => {elem.style.color = "green";});
+
+const newAppendLink = document.createElement("a");
+
+navBar.appendChild(newAppendLink);
+nav = document.querySelectorAll("nav > a");
+nav[6].textContent = "Balalal";
+nav[6].href = "#";
+
+navBar.prepend(document.createElement("a"));
+nav = document.querySelectorAll("nav > a");
+nav[0].textContent = "Balalalal";
+nav[0].href = "#";
+
+const randomWords = ["Cat", "Dog", "Rabbit", "Balloon"];
