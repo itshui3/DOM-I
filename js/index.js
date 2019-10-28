@@ -115,4 +115,36 @@ nav = document.querySelectorAll("nav > a");
 nav[0].textContent = "Balalalal";
 nav[0].href = "#";
 
-const randomWords = ["Cat", "Dog", "Rabbit", "Balloon"];
+
+//banner changing buttons => my stretch goal
+
+const btns = {
+  btnText: ["Cat", "Dog", "Rabbit", "Balloon"],
+  btnImgSrc: ["../img/cat.png", "../img/dog.png", "../img/rabbit.png", "../img/balloon.png"],
+  makeButton: function(elem) {
+    const button = document.createElement("button");
+    button.textContent = this.btnText[this.btnText.indexOf(elem)]; 
+    //redundancy for the sake of itself, lol ^
+    button.addEventListener("click", (e) => {
+      this.img.src = this.btnImgSrc[this.btnText.indexOf(elem)];
+    })
+    return button;
+  },
+  img: document.querySelector("#cta-img")
+}
+
+const firstBtn = document.querySelector(".cta-text > button");
+firstBtn.addEventListener("click", (e) => {
+  btns.img.src = "../img/header-img.png";
+});
+// ../img/header-img.png
+// function makeButton(text) {
+//   const button = document.createElement("button");
+//   button.textContent = text;
+//   return button;
+// }
+
+btns.btnText.forEach( (elem) => {
+  document.querySelector("div.cta-text").append(btns.makeButton(elem));
+});
+
