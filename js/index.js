@@ -44,12 +44,17 @@ logo.setAttribute('src', siteContent["nav"]["img-src"]);
 // nav
 let nav = document.querySelectorAll('nav a');
 let navBar = document.querySelector("nav");
-nav[0].textContent = siteContent["nav"]["nav-item-1"];
-nav[1].textContent = siteContent["nav"]["nav-item-2"];
-nav[2].textContent = siteContent["nav"]["nav-item-3"];
-nav[3].textContent = siteContent["nav"]["nav-item-4"];
-nav[4].textContent = siteContent["nav"]["nav-item-5"];
-nav[5].textContent = siteContent["nav"]["nav-item-6"];
+// nav[0].textContent = siteContent["nav"]["nav-item-1"];
+// nav[1].textContent = siteContent["nav"]["nav-item-2"];
+// nav[2].textContent = siteContent["nav"]["nav-item-3"];
+// nav[3].textContent = siteContent["nav"]["nav-item-4"];
+// nav[4].textContent = siteContent["nav"]["nav-item-5"];
+// nav[5].textContent = siteContent["nav"]["nav-item-6"];
+
+let navArr = Array.from(nav);
+navArr.forEach( (elem) => {
+  elem.textContent = siteContent["nav"][`nav-item-${navArr.indexOf(elem) + 1}`];
+});
 
 // cta
 let ctaHeading = document.querySelector('h1');
@@ -149,7 +154,7 @@ btns.btnText.forEach( (elem) => {
   document.querySelector("div.cta-text").append(btns.makeButton(elem));
 });
 
-// Fixing Address Text
+// Fixing Address Text, AKA Screw you Ash
 
 const addressPtext = document.querySelector(".contact > p").textContent;
 
